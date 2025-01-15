@@ -28,7 +28,7 @@ input:focus,
 textarea:focus,
 select:focus {
   background-color: #fff;
-  border-color: #6c5ce7;
+  border-color: #0c66e4;
 }
 
 input:-webkit-autofill {
@@ -40,7 +40,7 @@ input:-webkit-autofill {
 input:-webkit-autofill:focus {
   background-color: #fff !important;
   -webkit-box-shadow: 0 0 0px 1000px #fff inset !important;
-  border-color: #6c5ce7;
+  border-color: #0c66e4;
 }
 
 textarea {
@@ -70,7 +70,7 @@ textarea::placeholder {
 }
 
 button {
-  background-color: #6c5ce7;
+  background-color: #0c66e4;
   font-weight: 400;
   width: 400px;
   color: #fff;
@@ -82,27 +82,4 @@ button {
 
 .main {
   min-height: 80vh;
-}
-
-.markdown-content p {
-  margin-bottom: 1.5em; /* Adds spacing between paragraphs */
-  line-height: 1.6; /* Adjusts line height for readability */
-}
-
-.markdown-content a {
-  text-decoration: underline;
-  color: #667085;
-}
-
-.markdown-content h1,
-.markdown-content h2,
-.markdown-content h3 {
-  margin-top: 1.5em;
-  margin-bottom: 0.5em;
-}
-
-.markdown-content ul,
-.markdown-content ol {
-  margin-bottom: 1.5em;
-  padding-left: 1.5em;
 }

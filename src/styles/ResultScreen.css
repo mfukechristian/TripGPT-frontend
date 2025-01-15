@@ -9,3 +9,27 @@ p {
   font-size: 0.9rem;
   margin-bottom: 30px;
 }
+
+.markdown-content p {
+  margin-bottom: 1.5em; /* Adds spacing between paragraphs */
+  line-height: 1.6; /* Adjusts line height for readability */
+}
+
+.markdown-content a {
+  text-decoration: underline;
+  color: #667085;
+}
+
+.markdown-content h1,
+.markdown-content h2,
+.markdown-content h3 {
+  margin-top: 1.5em;
+  margin-bottom: 1em;
+  color: #0c66e4;
+  font-weight: 400;
+}
+
+.markdown-content ul,
+.markdown-content ol {
+  margin-bottom: 1.5em;
+}
