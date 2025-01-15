@@ -1,6 +1,7 @@
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
+import "../styles/ResultScreen.css";
 
 function ResultScreen() {
   const navigate = useNavigate();

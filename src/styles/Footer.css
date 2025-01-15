@@ -1,0 +1,9 @@
+footer {
+  text-align: center;
+}
+
+footer a {
+  font-weight: 500;
+  color: #6c5ce7;
+  text-decoration: none;
+}

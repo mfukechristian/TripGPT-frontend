@@ -1,0 +1,11 @@
+.result-screen {
+  width: 400px;
+  margin: 100px auto 50px auto;
+  padding: 20px;
+  line-height: 23px;
+}
+
+p {
+  font-size: 0.9rem;
+  margin-bottom: 30px;
+}
