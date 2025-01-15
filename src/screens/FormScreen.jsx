@@ -41,7 +41,7 @@ function FormScreen() {
   if (loading) {
     return (
       <div className="loading-screen">
-        <p>We are processing your request...</p>
+        <p>We are processing your request. This may take a few minutes...</p>
         <div className="spinner"></div>
       </div>
     );
