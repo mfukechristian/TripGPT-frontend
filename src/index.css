@@ -83,3 +83,26 @@ button {
 .main {
   min-height: 80vh;
 }
+
+.markdown-content p {
+  margin-bottom: 1.5em; /* Adds spacing between paragraphs */
+  line-height: 1.6; /* Adjusts line height for readability */
+}
+
+.markdown-content a {
+  text-decoration: underline;
+  color: #667085;
+}
+
+.markdown-content h1,
+.markdown-content h2,
+.markdown-content h3 {
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+}
+
+.markdown-content ul,
+.markdown-content ol {
+  margin-bottom: 1.5em;
+  padding-left: 1.5em;
+}
