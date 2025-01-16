@@ -2,14 +2,27 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/FormScreen.css";
 import axios from "axios";
+import countriesData from "../data/countries.json";
 
 function FormScreen() {
   const [formData, setFormData] = useState({
     country: "",
     city: "",
   });
+  const [cities, setCities] = useState([]);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+
+  const handleCountryChange = (e) => {
+    const selectedCountry = e.target.value;
+    setFormData({ ...formData, country: selectedCountry, city: "" });
+
+    // Find cities for the selected country
+    const country = countriesData.data.find(
+      (item) => item.country === selectedCountry
+    );
+    setCities(country ? country.cities : []);
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -60,13 +73,18 @@ function FormScreen() {
           <select
             name="country"
             value={formData.country}
-            onChange={handleChange}
+            onChange={handleCountryChange}
             required
+            style={{
+              cursor: formData.country ? "pointer" : "default",
+            }}
           >
             <option value="">Select a country</option>
-            <option value="France">France</option>
-            <option value="Italy">Italy</option>
-            <option value="Japan">Japan</option>
+            {countriesData.data.map((country) => (
+              <option key={country.iso2} value={country.country}>
+                {country.country}
+              </option>
+            ))}
           </select>
         </label>
         <label>
@@ -76,14 +94,29 @@ function FormScreen() {
             value={formData.city}
             onChange={handleChange}
             required
+            disabled={!formData.country}
+            style={{
+              cursor: formData.country ? "pointer" : "not-allowed",
+            }}
           >
             <option value="">Select a city</option>
-            <option value="Paris">Paris</option>
-            <option value="Rome">Rome</option>
-            <option value="Tokyo">Tokyo</option>
+            {cities.map((city, index) => (
+              <option key={index} value={city}>
+                {city}
+              </option>
+            ))}
           </select>
         </label>
-        <button type="submit">Generate Trip Plan</button>
+        <button
+          type="submit"
+          style={{
+            cursor:
+              formData.country && formData.city ? "pointer" : "not-allowed",
+          }}
+          disabled={!formData.country || !formData.city}
+        >
+          Generate Trip Plan
+        </button>
       </form>
     </div>
   );
