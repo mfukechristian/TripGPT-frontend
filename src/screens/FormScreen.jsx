@@ -1,27 +1,46 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/FormScreen.css";
 import axios from "axios";
-import countriesData from "../data/countries.json";
 
 function FormScreen() {
   const [formData, setFormData] = useState({
     country: "",
     city: "",
   });
+  const [countries, setCountries] = useState([]);
   const [cities, setCities] = useState([]);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const handleCountryChange = (e) => {
+  useEffect(() => {
+    // Fetch countries from backend
+    const fetchCountries = async () => {
+      try {
+        const response = await axios.get("http://localhost:5000/api/countries");
+        setCountries(response.data);
+      } catch (err) {
+        console.error("Error fetching countries:", err.message);
+      }
+    };
+
+    fetchCountries();
+  }, []);
+
+  const handleCountryChange = async (e) => {
     const selectedCountry = e.target.value;
     setFormData({ ...formData, country: selectedCountry, city: "" });
 
-    // Find cities for the selected country
-    const country = countriesData.data.find(
-      (item) => item.country === selectedCountry
-    );
-    setCities(country ? country.cities : []);
+    // Fetch cities for the selected country
+    try {
+      const response = await axios.get(
+        `http://localhost:5000/api/countries/${selectedCountry}/cities`
+      );
+      setCities(response.data);
+    } catch (err) {
+      console.error("Error fetching cities:", err.message);
+      setCities([]);
+    }
   };
 
   const handleChange = (e) => {
@@ -80,9 +99,9 @@ function FormScreen() {
             }}
           >
             <option value="">Select a country</option>
-            {countriesData.data.map((country) => (
-              <option key={country.iso2} value={country.country}>
-                {country.country}
+            {countries.map((country, index) => (
+              <option key={index} value={country}>
+                {country}
               </option>
             ))}
           </select>
