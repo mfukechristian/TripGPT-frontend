@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/FormScreen.css";
 import axios from "axios";
+import config from "../config";
 
 function FormScreen() {
   const [formData, setFormData] = useState({
@@ -17,7 +18,7 @@ function FormScreen() {
     // Fetch countries from backend
     const fetchCountries = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/countries");
+        const response = await axios.get(`${config.BASE_URL}/countries`);
         setCountries(response.data);
       } catch (err) {
         console.error("Error fetching countries:", err.message);
@@ -34,7 +35,7 @@ function FormScreen() {
     // Fetch cities for the selected country
     try {
       const response = await axios.get(
-        `http://localhost:5000/api/countries/${selectedCountry}/cities`
+        `${config.BASE_URL}/countries/${selectedCountry}/cities`
       );
       setCities(response.data);
     } catch (err) {
@@ -58,10 +59,7 @@ function FormScreen() {
         city: formData.city,
       };
 
-      const response = await axios.post(
-        "http://localhost:5000/api/generate",
-        payload
-      );
+      const response = await axios.post(`${config.BASE_URL}/generate`, payload);
       navigate("/result", { state: { result: response.data.result } });
     } catch (err) {
       console.error("An error occurred:", err.message);
@@ -81,7 +79,7 @@ function FormScreen() {
 
   return (
     <div className="form-screen">
-      <h1>Plan Your Dream Vacation with AI-Powered Itineraries</h1>
+      <h1>Plan Your Dream Vacation with AI</h1>
       <p>
         Discover your next destination, complete with personalized travel plans
         crafted by AI. Let us make your trip unforgettable!

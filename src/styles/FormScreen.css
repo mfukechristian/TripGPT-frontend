@@ -1,6 +1,7 @@
 .form-screen {
-  width: 400px;
-  margin: 100px auto 30px auto;
+  width: 90%;
+  max-width: 400px;
+  margin: 50px auto;
   padding: 20px;
   text-align: left;
 }
@@ -8,7 +9,7 @@
 h1 {
   font-weight: 400;
   margin-bottom: 10px;
-  width: 350px;
+  width: 100%;
   color: black;
 }
 
@@ -28,10 +29,11 @@ label {
 }
 
 select {
-  width: 400px;
+  width: 100%;
   background-color: #fff;
   border: 1px solid #ccc;
   border-radius: 4px;
+  padding: 10px;
 }
 
 button:disabled {
@@ -75,5 +77,51 @@ button:disabled {
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 768px) {
+  .form-screen {
+    margin: 30px auto;
+    padding: 15px;
+  }
+
+  h1 {
+    font-size: 20px;
+  }
+
+  select {
+    width: 100%;
+    padding: 8px;
+  }
+
+  button {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .form-screen {
+    margin: 20px auto;
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 18px;
+  }
+
+  select {
+    padding: 6px;
+  }
+
+  button {
+    font-size: 14px;
+  }
+
+  .spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #e0e0e0;
+    border-top: 4px solid #0c66e4;
   }
 }

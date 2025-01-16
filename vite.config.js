@@ -8,7 +8,7 @@ export default defineConfig({
     port: 3000,
     proxy: {
       "/api": {
-        target: "https://backend-samigration.onrender.com",
+        target: "https://tripgpt-backend-1.onrender.com",
         changeOrigin: true,
       },
     },

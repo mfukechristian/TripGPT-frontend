@@ -1,6 +1,7 @@
 .result-screen {
-  width: 400px;
-  margin: 100px auto 50px auto;
+  width: 90%;
+  max-width: 400px;
+  margin: 50px auto;
   padding: 20px;
 }
 
@@ -41,4 +42,60 @@ li {
   background-color: #fff;
   color: #0c66e4;
   border: 1px solid #0c66e4;
+}
+
+/* Media Queries for Tablets */
+@media (max-width: 768px) {
+  .result-screen {
+    margin: 30px auto;
+    padding: 15px;
+  }
+
+  p {
+    font-size: 0.85rem;
+    margin-bottom: 20px;
+  }
+
+  .markdown-content h1,
+  .markdown-content h2,
+  .markdown-content h3 {
+    font-size: 1.2rem;
+  }
+
+  .markdown-content p {
+    line-height: 1.5;
+  }
+
+  .save-btn {
+    font-size: 0.9rem;
+    padding: 10px;
+  }
+}
+
+/* Media Queries for Phones */
+@media (max-width: 480px) {
+  .result-screen {
+    margin: 20px auto;
+    padding: 10px;
+  }
+
+  p {
+    font-size: 0.8rem;
+    margin-bottom: 15px;
+  }
+
+  .markdown-content h1,
+  .markdown-content h2,
+  .markdown-content h3 {
+    font-size: 1rem;
+  }
+
+  .markdown-content p {
+    line-height: 1.4;
+  }
+
+  .save-btn {
+    font-size: 0.8rem;
+    padding: 8px;
+  }
 }
