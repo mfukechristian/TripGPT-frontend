@@ -14,8 +14,9 @@ function ResultScreen() {
 
   return (
     <div className="result-screen">
-      <ReactMarkdown className="markdown-content">{result}</ReactMarkdown>
-      <button onClick={handleBack}>Back to Form</button>
+      <ReactMarkdown className="markdown-content">{result}</ReactMarkdown>{" "}
+      <button className="save-btn">Save Result </button>
+      <button onClick={handleBack}>Back to Form</button>{" "}
     </div>
   );
 }

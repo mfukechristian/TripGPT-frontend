@@ -35,3 +35,10 @@ li {
   font-weight: 400;
   line-height: 1.6;
 }
+
+.save-btn {
+  margin-bottom: 20px;
+  background-color: #fff;
+  color: #0c66e4;
+  border: 1px solid #0c66e4;
+}
