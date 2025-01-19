@@ -4,7 +4,8 @@ header {
   width: 100%;
   height: 80px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  background-color: #fff;
   align-items: center;
   padding: 30px 20px;
   z-index: 1000;

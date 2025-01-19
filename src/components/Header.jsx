@@ -17,9 +17,6 @@ function Header() {
   return (
     <header>
       <img src={logo} alt="TripGPT Logo" onClick={handleLogoClick} />
-      <button className="login-button" onClick={handleLoginClick}>
-        Login
-      </button>
     </header>
   );
 }
