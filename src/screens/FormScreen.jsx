@@ -12,16 +12,21 @@ function FormScreen() {
   const [countries, setCountries] = useState([]);
   const [cities, setCities] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [loadingCountries, setLoadingCountries] = useState(false);
+
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Fetch countries from backend
+    // Fetch countries from backend with loading state
     const fetchCountries = async () => {
+      setLoadingCountries(true);
       try {
         const response = await axios.get(`${config.BASE_URL}/countries`);
         setCountries(response.data);
       } catch (err) {
         console.error("Error fetching countries:", err.message);
+      } finally {
+        setLoadingCountries(false);
       }
     };
 
@@ -32,7 +37,6 @@ function FormScreen() {
     const selectedCountry = e.target.value;
     setFormData({ ...formData, country: selectedCountry, city: "" });
 
-    // Fetch cities for the selected country
     try {
       const response = await axios.get(
         `${config.BASE_URL}/countries/${selectedCountry}/cities`
@@ -92,16 +96,24 @@ function FormScreen() {
             value={formData.country}
             onChange={handleCountryChange}
             required
+            disabled={loadingCountries}
             style={{
-              cursor: formData.country ? "pointer" : "default",
+              cursor: loadingCountries
+                ? "not-allowed"
+                : formData.country
+                ? "pointer"
+                : "default",
             }}
           >
-            <option value="">Select a country</option>
-            {countries.map((country, index) => (
-              <option key={index} value={country}>
-                {country}
-              </option>
-            ))}
+            <option value="">
+              {loadingCountries ? "Loading countries..." : "Select a country"}
+            </option>
+            {!loadingCountries &&
+              countries.map((country, index) => (
+                <option key={index} value={country}>
+                  {country}
+                </option>
+              ))}
           </select>
         </label>
         <label>
